@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-charcoal text-white font-exo overflow-x-hidden m-0 p-0;
+  background-image: radial-gradient(
+      circle at 15% 50%,
+      rgba(88, 166, 255, 0.08) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(0, 255, 204, 0.08) 0%,
+      transparent 25%
+    );
+}
+
+/* .glassmorphism {
+  @apply background: rgba(13, 17, 23, 0.7)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
+  border: 1px solid rgba(88, 166, 255, 0.18)
+  box-shadow: 0 8px 32px 0 rgba(0, 255, 204, 0.1);
+} */
+
+.glassmorphism {
+  background: rgba(13, 17, 23, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(88, 166, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 255, 204, 0.1);
+}
+
+.neon-border {
+  @apply relative overflow-hidden;
+}
+
+.neon-border::before {
+  content: "";
+  @apply absolute inset-0 p-[1px] rounded-lg bg-gradient-to-br from-cool-blue to-neon-green opacity-70;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(88, 166, 255, 0.8), 0 0 20px rgba(0, 255, 204, 0.4);
+}
+
+.holographic-button {
+  @apply relative overflow-hidden transition-all duration-300 ease-in-out;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 17, 23, 0.9),
+    rgba(22, 27, 34, 0.9)
+  );
+}
+
+.holographic-button::before {
+  content: "";
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out;
+  background: linear-gradient(
+    135deg,
+    rgba(88, 166, 255, 0.2),
+    rgba(0, 255, 204, 0.2)
+  );
+}
+
+.holographic-button:hover::before {
+  @apply opacity-100;
+}
+
+.grid-background {
+  background-size: 30px 30px;
+  @apply bg-grid-pattern;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-darker-blue;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cool-blue/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-cool-blue/50;
+}
+
+/* Globe text path animation */
+.text-on-path {
+  fill: none;
+  stroke: theme("colors.neon-green");
+  stroke-width: 1px;
+  animation: dashOffset 20s linear infinite;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+}
+
+@keyframes dashOffset {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -200;
+  }
+}
